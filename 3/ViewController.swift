@@ -9,13 +9,16 @@
 import UIKit
 
 class minion {
-    var minionArray: [String] = ["Kevin.png","bob.png","stuart.png"]
-    var nameArray: [String] = ["kevin","Bob","Stuart"]
+    var minionPic: UIImage!
+    var minionName: String!
 }
-
 class ViewController: UIViewController {
     var number: Int = 2
-    let minionClass = minion()
+    
+    var minionCollection: [String] = []
+    var kevin: minion = minion()
+    var stuart: minion = minion()
+    var bob: minion = minion()
     
     @IBOutlet weak var image: UIImageView!
     
@@ -23,7 +26,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //インスタンス
+        bob.minionPic = UIImage(named: "bob.png")
+        bob.minionName = "bob"
+        stuart.minionPic = UIImage(named: "stuart.png")
+        stuart.minionName = "stuart"
+        kevin.minionPic = UIImage(named: "kevin3.png")
+        kevin.minionName = "kevin"
+        minionCollection.append("bob")
+        minionCollection.append("stuart")
+        minionCollection.append("kevin")
     }
     
     @IBAction func back(_ sender: Any) {
@@ -32,8 +44,8 @@ class ViewController: UIViewController {
         } else {
             number -= 1
         }
-        image.image = UIImage(named: minionClass.minionArray[number])
-        label.text = minionClass.nameArray[number]
+        image.image = UIImage(named: minionCollection[number])
+        label.text = minionCollection[number]
         
     }
     
@@ -43,11 +55,8 @@ class ViewController: UIViewController {
         } else {
             number += 1
         }
-        image.image = UIImage(named: minionClass.minionArray[number])
-        label.text = minionClass.nameArray[number]
+        image.image = UIImage(named: minionCollection[number])
+        label.text = minionCollection[number]
     }
-    
-
-
 }
 
